@@ -16,7 +16,7 @@ class Titulaire {
         $this->prenom = $prenom;
         $this->sexe = $sexe;
         // on instancie un nouvel objet DateTime
-        $this->dateNaissance = new DateTime($dateNaissance); 
+        $this->dateNaissance = new DateTime($dateNaissance);
         $this->comptes = [];
     }
 

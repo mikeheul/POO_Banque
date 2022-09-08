@@ -10,11 +10,13 @@ class Titulaire {
     private array $comptes;
 
     // constructeur
-    public function __construct(string $nom, string $prenom, string $sexe, string $dateNaissance) {
+    public function __construct(string $nom = "", string $prenom = "", string $sexe = "", string $dateNaissance = "now") 
+    {
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->sexe = $sexe;
-        $this->dateNaissance = new DateTime($dateNaissance);
+        // on instancie un nouvel objet DateTime
+        $this->dateNaissance = new DateTime($dateNaissance); 
         $this->comptes = [];
     }
 
@@ -99,12 +101,16 @@ class Titulaire {
         return date_diff(new DateTime(), $this->dateNaissance)->format("%Y");
     }
 
-    public function ajouterCompte(Compte $compte) {
+    // Ajouter un nouveau Compte dans le tableau "comptes" du Titulaire (+ message de confirmation)
+    public function ajouterCompte(Compte $compte) 
+    {
         $this->comptes[] = $compte;
         echo "Le compte <strong>$compte</strong> a été ajouté<br>";
     }
 
-    public function afficherComptes() {
+    public function afficherComptes() 
+    {
+        //  terminaison singulier ou pluriel en fonction du nombre de comptes du titulaire (ternaire)
         $term = (count($this->comptes) > 1 ? "s" : "");
         $result = "<br>Compte$term de $this<br>";
         $result .= count($this->comptes). " compte$term";
@@ -116,7 +122,8 @@ class Titulaire {
         return $result;
     }
 
-    public function __toString() {
+    public function __toString() 
+    {
         return "<strong>$this->prenom $this->nom</strong>"." (".$this->getAge()." ans)";
     }
 }

@@ -15,6 +15,7 @@ class Compte {
         $this->soldeInitial = $soldeInitial;
         $this->devise = $devise;
         $this->titulaire = $titulaire;
+        // à la création d'un compte, on l'ajoute chez le titulaire
         $this->titulaire->ajouterCompte($this);
     }
    
@@ -98,20 +99,24 @@ class Compte {
         return $this;
     }
 
-    public function crediter(float $montant) {
+    public function crediter(float $montant) 
+    {
         $this->soldeInitial += $montant;
     }
 
-    public function debiter(float $montant) {
+    public function debiter(float $montant) 
+    {
         $this->soldeInitial -= $montant;
     }
 
-    public function virement(float $montant, Compte $compte) {
+    public function virement(float $montant, Compte $compte) 
+    {
         $this->debiter($montant);
         $compte->crediter($montant);
     }
 
-    public function __toString() {
+    public function __toString() 
+    {
         return "$this->libelle ($this->soldeInitial $this->devise)"; 
     }
 }

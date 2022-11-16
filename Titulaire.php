@@ -112,9 +112,7 @@ class Titulaire {
     {
         //  terminaison singulier ou pluriel en fonction du nombre de comptes du titulaire (ternaire)
         $term = (count($this->comptes) > 1 ? "s" : "");
-        $result = "<br>Compte$term de $this<br>";
-        $result .= count($this->comptes). " compte$term";
-        $result .= "<ul>";
+        $result = "<br>Compte$term de $this<br>".count($this->comptes). " compte$term<ul>";
         foreach ($this->comptes as $compte) {
             $result .= "<li>$compte</li>";
         }
